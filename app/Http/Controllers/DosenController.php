@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DosenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +50,14 @@ class DosenController extends Controller
         $dosen->tgl_lahir = $request->tgl_lahir;
         $dosen->save();
 
-        return view(redirect('dosen.index'));
+        $user = User::create([
+            'name' => $request->nama_lengkap,
+            'username' => $request->nip,
+            'role' => "dosen",
+            'password' => Hash::make($request->nip),
+        ]);
+
+        return redirect(route('dosen.index'));
     }
 
     /**
@@ -102,5 +115,11 @@ class DosenController extends Controller
     {
         $delete = Dosen::find($id)->delete();
         return redirect(route('dosen.index'));
+    }
+
+    public function editpassword($id)
+    {
+        // $delete = Dosen::find($id)->delete();
+        // return redirect(route('dosen.index'));
     }
 }

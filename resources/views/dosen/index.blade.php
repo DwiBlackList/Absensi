@@ -23,7 +23,7 @@
                             <th>Nomor HandPhone</th>
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
-                            <th colspan="2">Actions</th>
+                            <th colspan="3">Actions</th>
                         </tr>
                     </thead>
                     @if(!is_null($data))
@@ -36,6 +36,9 @@
                         <td>{{ \Carbon\Carbon::parse($x->tgl_lahir)->format('d/m/Y') }}</td>
                         <td>
                             <a href="{{ route('dosen.edit' , $x->id) }}" class="btn btn-outline-info">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('dosen.editpassword' , $x->id) }}" class="btn btn-outline-warning">Edit Password</a>
                         </td>
                         <td>
                             <form action="{{ route('dosen.destroy' , $x->id) }}" method="post">
