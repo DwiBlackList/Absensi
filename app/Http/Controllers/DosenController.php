@@ -100,6 +100,7 @@ class DosenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Dosen::find($id)->delete();
+        return redirect(route('dosen.index'));
     }
 }
