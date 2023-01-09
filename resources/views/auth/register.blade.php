@@ -20,6 +20,13 @@
                     <x-input id="name" type="text" name="name" :value="old('name')" required autofocus />
                 </div>
 
+                <!-- username -->
+                <div class="mb-3">
+                    <x-label for="username" :value="__('Username')" />
+
+                    <x-input id="username" type="text" name="username" :value="old('username')" required autofocus />
+                </div>
+
                 <!-- Email Address -->
                 <div class="mb-3">
                     <x-label for="email" :value="__('Email')" />
@@ -43,7 +50,7 @@
                     <x-input id="password_confirmation" type="password"
                                     name="password_confirmation" required />
                 </div>
-
+                <x-input id="role" type="text" name="role" :value="old('role')" value="admin" hidden required autofocus />
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
                         <a class="text-muted me-3 text-decoration-none" href="{{ route('login') }}">
