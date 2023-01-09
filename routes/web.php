@@ -27,8 +27,9 @@ Route::get('/dosen', [DosenController::class, 'index'])->name('dosen.index');
 Route::get('/dosen/create', [DosenController::class, 'create'])->name('dosen.create');
 Route::post('/dosen/store', [DosenController::class, 'store'])->name('dosen.store');
 Route::get('/dosen/edit/{kode}', [DosenController::class, 'edit'])->name('dosen.edit');
-Route::get('/dosen/editpassword/{kode}', [DosenController::class, 'editpassword'])->name('dosen.editpassword');
 Route::post('/dosen/update/{kode}', [DosenController::class, 'update'])->name('dosen.update');
 Route::post('/dosen/destroy/{kode}', [DosenController::class, 'destroy'])->name('dosen.destroy');
+Route::get('/dosen/editpassword/{kode}', [DosenController::class, 'editpassword'])->name('dosen.editpassword');
+Route::post('/dosen/updatepassword/{kode}', [DosenController::class, 'updatepassword'])->name('dosen.updatepassword');
 
 require __DIR__.'/auth.php';

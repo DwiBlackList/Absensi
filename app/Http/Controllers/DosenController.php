@@ -6,6 +6,7 @@ use App\Models\Dosen;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class DosenController extends Controller
 {
@@ -21,7 +22,7 @@ class DosenController extends Controller
     public function index()
     {
         $data = Dosen::all();
-        return view('dosen.index' , compact('data'));
+        return view('dosen.index', compact('data'));
     }
 
     /**
@@ -119,7 +120,20 @@ class DosenController extends Controller
 
     public function editpassword($id)
     {
-        // $delete = Dosen::find($id)->delete();
-        // return redirect(route('dosen.index'));
+        $data = Dosen::find($id);
+
+        return view('dosen.editpassword', compact('data'));
+    }
+    public function updatepassword(Request $request, $id)
+    {
+        $datadosen = Dosen::find($id);
+
+        DB::table('users')
+            ->where('username', $datadosen->nip)
+            ->update([
+                'password' => Hash::make($request->password),
+            ]);
+
+        return redirect(route('dosen.index'));
     }
 }
