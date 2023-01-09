@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DosenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,13 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/dosen', [DosenController::class, 'index'])->name('dosen.index');
+Route::get('/dosen/create', [DosenController::class, 'create'])->name('dosen.create');
+Route::post('/dosen/store', [DosenController::class, 'store'])->name('dosen.store');
+Route::get('/dosen/edit/{kode}', [DosenController::class, 'edit'])->name('dosen.edit');
+Route::post('/dosen/update/{kode}', [DosenController::class, 'update'])->name('dosen.update');
+Route::post('/dosen/destroy/{kode}', [DosenController::class, 'destroy'])->name('dosen.destroy');
 
 require __DIR__.'/auth.php';

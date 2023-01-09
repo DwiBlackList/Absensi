@@ -16,11 +16,11 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-light">
+    <body class="font-sans antialiased text-white bg-dark">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
-        <header class="d-flex py-3 bg-white shadow-sm border-bottom">
+        <header class="d-flex py-3 bg-dark shadow-sm">
             <div class="container">
                 {{ $header }}
             </div>

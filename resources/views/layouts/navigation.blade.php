@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="/">
@@ -13,6 +13,10 @@
             <ul class="navbar-nav me-auto">
                 <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('dosen.index') }}" :active="request()->routeIs('dosen.index')">
+                    {{ __('Dosen') }}
                 </x-nav-link>
             </ul>
 
