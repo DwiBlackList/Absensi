@@ -66,7 +66,10 @@ class DosenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list_jenis_kelamin = ['Laki - Laki', 'Perempuan'];
+
+        $data = Dosen::find($id);
+        return view('dosen.edit', compact('data', 'list_jenis_kelamin'));
     }
 
     /**
@@ -78,7 +81,15 @@ class DosenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = Dosen::find($id);
+        $update->nip = $request->nip;
+        $update->nama_lengkap = $request->nama_lengkap;
+        $update->nohp = $request->nohp;
+        $update->jenis_kelamin = $request->jenis_kelamin;
+        $update->tgl_lahir = $request->tgl_lahir;
+        $update->update();
+
+        return redirect(route('dosen.index'));
     }
 
     /**
