@@ -18,28 +18,38 @@
                 <table class="table table-dark table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
+                            <th>NIP</th>
+                            <th>Nama Lengkap</th>
+                            <th>Nomor HandPhone</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tanggal Lahir</th>
+                            <th colspan="2">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>July</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
-                        </tr>
-                    </tbody>
+                    @if(!is_null($data))
+                    @foreach($data as $x)
+                    <tr>
+                        <td>{{ $x->nip }}</td>
+                        <td>{{ $x->nama_lengkap }}</td>
+                        <td>{{ $x->nohp }}</td>
+                        <td>{{ $x->jenis_kelamin }}</td>
+                        <td>{{ \Carbon\Carbon::parse($x->tgl_lahir)->format('d/m/Y') }}</td>
+                        <td>
+                            <a href="{{ route('dosen.edit' , $x->id) }}" class="btn btn-outline-info">Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('dosen.destroy' , $x->id) }}" method="post">
+                                @csrf
+                                <button class="btn btn-outline-danger" onclick="return confirm('Yang Bener Mau Dihapus ?')">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="7">Data Tidak Ada</td>
+                    </tr>
+                    @endif
                 </table>
             </div>
         </div>
