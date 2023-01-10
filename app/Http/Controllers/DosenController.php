@@ -114,7 +114,11 @@ class DosenController extends Controller
      */
     public function destroy($id)
     {
-        $delete = Dosen::find($id)->delete();
+        $delete = Dosen::find($id);
+        DB::table('users')
+        ->where('username', $delete->nip)
+        ->delete();
+        $delete->delete();
         return redirect(route('dosen.index'));
     }
 
