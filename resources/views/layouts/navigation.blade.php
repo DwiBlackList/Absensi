@@ -18,6 +18,10 @@
                 <x-nav-link href="{{ route('dosen.index') }}" :active="request()->routeIs('dosen.index')">
                     {{ __('Dosen') }}
                 </x-nav-link>
+
+                <x-nav-link href="{{ route('mahasiswa.index') }}" :active="request()->routeIs('mahasiswa.index')">
+                    {{ __('Mahasiswa') }}
+                </x-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

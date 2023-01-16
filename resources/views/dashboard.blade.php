@@ -5,9 +5,5 @@
         </h2>
     </x-slot>
 
-    <div class="card my-4">
-        <div class="card-body">
-            You're logged in! , Dalam Kontruksi
-        </div>
-    </div>
+    
 </x-app-layout>
